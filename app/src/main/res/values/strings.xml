@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PillsReminder</string>
+    <string name="app_description_name">Carnet de santé</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    
+    <!-- Fragments tabs -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pill_tab_fragment_title">Pills</string>
+    <string name="sport_tab_fragment_title">Sport</string>
+    <string name="food_tab_fragment_title">Food</string>
+    <string name="title_activity_new_pill">NewPillActivity</string>
+    
+    <!-- New Pill Activity -->
+    <string name="hint_word">Title ...</string>
+
+    <!-- Buttons -->
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_next">Next</string>
+    <string name="button_previous">Previous</string>
+
+</resources>
