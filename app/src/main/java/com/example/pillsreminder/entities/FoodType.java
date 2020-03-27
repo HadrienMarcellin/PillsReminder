@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "activityTable")
-public class Activity {
+@Entity(tableName = "foodTable")
+public class FoodType {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -19,23 +19,10 @@ public class Activity {
     @ColumnInfo(name = "sub_type")
     private String sub_type;
 
-    @ColumnInfo(name = "risk")
-    private int risk;
-
-    public Activity(int id, String name, String type, String sub_type, int risk) {
-        this.id = id;
+    public FoodType(String name, String type, String sub_type) {
         this.name = name;
         this.type = type;
         this.sub_type = sub_type;
-        this.risk = risk;
-    }
-
-    public int getRisk() {
-        return risk;
-    }
-
-    public void setRisk(int risk) {
-        this.risk = risk;
     }
 
     public int getId() {
