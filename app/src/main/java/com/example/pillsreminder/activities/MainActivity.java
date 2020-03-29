@@ -9,9 +9,11 @@ import android.os.Bundle;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.fragments.FoodTabFragment;
+import com.example.pillsreminder.fragments.PainTabFragment;
 import com.example.pillsreminder.fragments.PillTabFragment;
 import com.example.pillsreminder.fragments.SportTabFragment;
 import com.example.pillsreminder.tabAdapters.SITabAdapter;
+import com.example.pillsreminder.viewModels.PainViewModel;
 import com.example.pillsreminder.viewModels.PillViewModel;
 import com.google.android.material.tabs.TabLayout;
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private PillViewModel mPillViewModel;
+    private PainViewModel mPainViewModel;
 
 
     @Override
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new SITabAdapter(getSupportFragmentManager());
         adapter.addFragment(new PillTabFragment(), PillTabFragment.title);
+        adapter.addFragment(new PainTabFragment(), PainTabFragment.title);
         adapter.addFragment(new SportTabFragment(), SportTabFragment.title);
         adapter.addFragment(new FoodTabFragment(), FoodTabFragment.title);
 

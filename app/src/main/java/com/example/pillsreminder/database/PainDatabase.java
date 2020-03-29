@@ -22,7 +22,7 @@ public abstract class PainDatabase extends RoomDatabase {
 
     private static volatile PainDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    private static final ExecutorService databaseWriterExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriterExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static PainDatabase getInstance(Context context) {
         if (INSTANCE == null)

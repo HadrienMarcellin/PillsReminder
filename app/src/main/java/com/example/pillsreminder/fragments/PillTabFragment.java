@@ -47,7 +47,7 @@ public class PillTabFragment extends Fragment {
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = getActivity().findViewById(R.id.pill_recyclerview);
         final PillListAdapter adapter = new PillListAdapter(getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

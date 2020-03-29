@@ -7,6 +7,7 @@
     <!-- Fragments tabs -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pill_tab_fragment_title">Pills</string>
+    <string name="pain_tab_fragment_title">Pain</string>
     <string name="sport_tab_fragment_title">Sport</string>
     <string name="food_tab_fragment_title">Food</string>
     <string name="title_activity_new_pill">NewPillActivity</string>
