@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.pillsreminder.R;
+import com.example.pillsreminder.activities.NewPainActivity;
 import com.example.pillsreminder.activities.NewPillActivity;
 import com.example.pillsreminder.entities.Pain;
 import com.example.pillsreminder.viewAdapter.PainListAdapter;
@@ -66,7 +67,7 @@ public class PainTabFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NewPillActivity.class);
+                Intent intent = new Intent(getContext(), NewPainActivity.class);
                 startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
             }
         });
@@ -76,8 +77,7 @@ public class PainTabFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Pain pain = new Pain(Integer.valueOf(data.getStringExtra(NewPillActivity.EXTRA_REPLY)));
-            painViewModel.insertItem(pain);
+            Toast.makeText(getContext(), "Pain was added.", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_LONG).show();
         }

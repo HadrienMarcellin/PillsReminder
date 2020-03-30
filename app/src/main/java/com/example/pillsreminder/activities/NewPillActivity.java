@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.pillsreminder.R;
+import com.example.pillsreminder.entities.Pill;
+import com.example.pillsreminder.repositories.PillRepository;
 
 public class NewPillActivity extends AppCompatActivity {
 
@@ -17,6 +19,17 @@ public class NewPillActivity extends AppCompatActivity {
     public static final String EXTRA_REPLY = "com.example.android.pillsreminder.REPLY";
 
     private EditText mEditTextView;
+    private Pill newPill;
+
+
+    private void createPillFromSurvey() {
+        newPill =  new Pill("pill");
+    }
+
+    private void insertPillToDatabase() {
+        PillRepository pillRepository = new PillRepository(getApplication());
+        pillRepository.insert(newPill);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +47,8 @@ public class NewPillActivity extends AppCompatActivity {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     String title = mEditTextView.getText().toString();
+                    createPillFromSurvey();
+                    insertPillToDatabase();
                     replyIntent.putExtra(EXTRA_REPLY, title);
                     setResult(RESULT_OK, replyIntent);
                 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.entities.Pill;
+import com.example.pillsreminder.helpers.CalendarHelpers;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
         if (mPills != null)
         {
             Pill current = mPills.get(position);
-            holder.pillTextView.setText(current.getDrug());
+            holder.pillTextView.setText(CalendarHelpers.calendarToString(current.getDate()));
         } else {
             holder.pillTextView.setText("No Pill");
         }

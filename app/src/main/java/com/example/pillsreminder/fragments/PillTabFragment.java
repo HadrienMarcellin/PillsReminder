@@ -75,8 +75,8 @@ public class PillTabFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Pill pill = new Pill(data.getStringExtra(NewPillActivity.EXTRA_REPLY));
-            mPillViewModel.insertItem(pill);
+           // Pill pill = new Pill(data.getStringExtra(NewPillActivity.EXTRA_REPLY));
+           // mPillViewModel.insertItem(pill);
         } else {
             Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_LONG).show();
         }

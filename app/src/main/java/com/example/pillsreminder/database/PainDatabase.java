@@ -10,9 +10,11 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.pillsreminder.dao.PainDao;
 import com.example.pillsreminder.entities.Pain;
+import com.example.pillsreminder.helpers.PainLevels;
 
 import org.jetbrains.annotations.NonNls;
 
+import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -42,7 +44,7 @@ public abstract class PainDatabase extends RoomDatabase {
                 PainDao dao = INSTANCE.painDao();
                 dao.deleteAll();
 
-                Pain pain = new Pain(1);
+                Pain pain = new Pain(PainLevels.LOW, false, Calendar.getInstance());
                 dao.insert(pain);
             });
 

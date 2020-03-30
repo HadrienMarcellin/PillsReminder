@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.entities.Pain;
+import com.example.pillsreminder.helpers.CalendarHelpers;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
     public void onBindViewHolder(@NonNull PainViewHolder holder, int position) {
         if (allPains != null) {
             Pain current = allPains.get(position);
-            holder.textView.setText(String.valueOf(current.getLevel()));
+            holder.textView.setText(CalendarHelpers.calendarToString(current.getDate()));
         } else {
             holder.textView.setText("No pain.");
         }

@@ -13,7 +13,7 @@
     <string name="title_activity_new_pill">NewPillActivity</string>
 
     <!-- New Pill Activity -->
-    <string name="hint_word">Title ...</string>
+    <string name="hint_word">Name ...</string>
 
     <!-- Buttons -->
     <string name="button_save">Save</string>
