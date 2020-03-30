@@ -33,9 +33,10 @@
             android:id="@+id/fab_new_pain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@android:drawable/ic_input_add"
             android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@drawable/plus"
+            app:backgroundTint="#FAFAFA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
