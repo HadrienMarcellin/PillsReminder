@@ -17,10 +17,10 @@ import java.util.List;
 public interface DrugDao {
 
     @Query("SELECT * FROM drugTable")
-    LiveData<List<Drug>> getAllMedecines();
+    LiveData<List<Drug>> getAllDrugs();
 
     @Query("SELECT * FROM drugTable WHERE id = :id LIMIT 1")
-    Drug getMedecineFromId(long id);
+    Drug getDrugFromId(long id);
 
     @Query("DELETE FROM drugTable ")
     void deleteAll();
@@ -29,8 +29,8 @@ public interface DrugDao {
     void insert(Drug drug);
 
     @Update
-    void updateMedecine(Drug drug);
+    void updateDrug(Drug drug);
 
     @Delete
-    void deleteMedecine(Drug drug);
+    void deleteDrug(Drug drug);
 }

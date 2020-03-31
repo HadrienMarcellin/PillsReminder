@@ -11,9 +11,10 @@
     <string name="sport_tab_fragment_title">Sport</string>
     <string name="food_tab_fragment_title">Food</string>
     <string name="title_activity_new_pill">NewPillActivity</string>
+    <string name="default_list_title">List</string>
 
     <!-- New Pill Activity -->
-    <string name="hint_word">Name ...</string>
+    <string name="hint_word">Name</string>
 
     <!-- Buttons -->
     <string name="button_save">Save</string>

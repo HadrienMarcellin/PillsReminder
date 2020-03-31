@@ -28,7 +28,7 @@ public abstract class PainDatabase extends RoomDatabase {
 
     public static PainDatabase getInstance(Context context) {
         if (INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PainDatabase.class, "PainDatabase").addCallback(sRoomDatabseCallback).build();
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PainDatabase.class, "PainDatabase").build();
         return INSTANCE;
     }
 

@@ -5,6 +5,7 @@ import androidx.core.view.accessibility.AccessibilityManagerCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,7 +14,10 @@ import android.widget.TextView;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.entities.Pain;
+import com.example.pillsreminder.helpers.CalendarHelpers;
+import com.example.pillsreminder.helpers.DateTextWatcher;
 import com.example.pillsreminder.helpers.PainLevels;
+import com.example.pillsreminder.helpers.TimeTextWatcher;
 import com.example.pillsreminder.repositories.PainRepository;
 
 import java.util.Calendar;
@@ -22,8 +26,8 @@ public class NewPainActivity extends AppCompatActivity {
 
     private Pain newPain;
     private TextView textViewPainLevel;
-    private TextView textViewDate;
-    private TextView textViewTime;
+    private TextView editTextViewDate;
+    private TextView editTextViewTime;
     private PainLevels painLevel;
     private ImageView imagePlus;
     private ImageView imageMinus;
@@ -40,14 +44,14 @@ public class NewPainActivity extends AppCompatActivity {
         painLevels = PainLevels.values();
         painLevel = painLevels[0];
 
-        textViewPainLevel = findViewById(R.id.new_pain_level);
-        textViewPainLevel.setText(painLevel.getName());
 
-        imagePlus = findViewById(R.id.new_pain_plus);
-        imageMinus = findViewById(R.id.new_pain_minus);
-        buttonSave = findViewById(R.id.new_pain_save);
-        checkBoxSurge = findViewById(R.id.new_pain_long_duration);
+        assignTagsToInterface();
         setButtonCallbacks();
+
+        editTextViewTime.addTextChangedListener(new TimeTextWatcher());
+        editTextViewDate.addTextChangedListener(new DateTextWatcher());
+
+        setDefaultValues();
     }
 
     private void setButtonCallbacks() {
@@ -91,13 +95,37 @@ public class NewPainActivity extends AppCompatActivity {
         });
     }
 
+    private void assignTagsToInterface() {
+        textViewPainLevel = findViewById(R.id.new_pain_level);
+        editTextViewDate = findViewById(R.id.new_pain_date);
+        editTextViewTime = findViewById(R.id.new_pain_time);
+        imagePlus = findViewById(R.id.new_pain_plus);
+        imageMinus = findViewById(R.id.new_pain_minus);
+        buttonSave = findViewById(R.id.new_pain_save);
+        checkBoxSurge = findViewById(R.id.new_pain_long_duration);
+    }
+
+    private void setDefaultValues() {
+        Calendar now = Calendar.getInstance();
+        String date = CalendarHelpers.calendarToDateString(now);
+        String time = CalendarHelpers.calendarToTimeString(now);
+
+        editTextViewDate.setText(date);
+        editTextViewTime.setText(time);
+        textViewPainLevel.setText(painLevel.getName());
+    }
+
     private boolean createPainFromSurvey() {
         if (painLevel.equals(PainLevels.UNDIFINED))
             return false;
-        else {
-            this.newPain = new Pain(painLevel, checkBoxSurge.isChecked(), Calendar.getInstance());
-            return true;
-        }
+
+        if(TextUtils.isEmpty(editTextViewDate.getText()) || TextUtils.isEmpty(editTextViewTime.getText()))
+            return false;
+
+        Calendar cal = CalendarHelpers.stringToCalendar(editTextViewDate.getText().toString(), editTextViewTime.getText().toString());
+        this.newPain = new Pain(painLevel, checkBoxSurge.isChecked(), cal);
+        return true;
+
     }
 
     private void insertPainToDatabase() {

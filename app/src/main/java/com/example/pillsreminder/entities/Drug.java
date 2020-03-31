@@ -38,6 +38,14 @@ public class Drug {
         this.side_effects = side_effects;
     }
 
+    public Drug(String name, String type, String sub_type, int times_per_day, String description, String side_effects) {
+        this.name = name;
+        this.type = type;
+        this.sub_type = sub_type;
+        this.times_per_day = times_per_day;
+        this.description = description;
+        this.side_effects = side_effects;
+    }
 
     /// Getters
     public int getId() {

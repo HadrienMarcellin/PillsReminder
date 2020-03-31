@@ -36,7 +36,9 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
         if (mPills != null)
         {
             Pill current = mPills.get(position);
-            holder.pillTextView.setText(CalendarHelpers.calendarToString(current.getDate()));
+            holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));
+            holder.textView_time.setText(CalendarHelpers.calendarToTimeString(current.getDate()));
+
             holder.imageDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -44,7 +46,8 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
                 }
             });
         } else {
-            holder.pillTextView.setText("No Pill");
+            holder.textView_date.setText("-");
+            holder.textView_time.setText("-");
         }
     }
 
@@ -67,11 +70,13 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
     }
 
     public class PillViewHolder extends RecyclerView.ViewHolder{
-        private TextView pillTextView;
+        private TextView textView_date;
+        private TextView textView_time;
         private ImageView imageDelete;
         public PillViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.pillTextView = itemView.findViewById(R.id.textView_pill);
+            this.textView_date = itemView.findViewById(R.id.textView_date_pill_item);
+            this.textView_time = itemView.findViewById(R.id.textView_time_pill_item);
             this.imageDelete = itemView.findViewById(R.id.imageDelete);
 
         }

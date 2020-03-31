@@ -34,7 +34,8 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
     public void onBindViewHolder(@NonNull PainViewHolder holder, int position) {
         if (allPains != null) {
             Pain current = allPains.get(position);
-            holder.textView.setText(CalendarHelpers.calendarToString(current.getDate()));
+            holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));
+            holder.textView_time.setText(CalendarHelpers.calendarToTimeString(current.getDate()));
             holder.imageDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -42,7 +43,8 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
                 }
             });
         } else {
-            holder.textView.setText("No pain.");
+            holder.textView_date.setText("-");
+            holder.textView_time.setText("-");
         }
     }
 
@@ -67,12 +69,14 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
 
     public class PainViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView textView;
+        private TextView textView_date;
+        private TextView textView_time;
         private ImageView imageDelete;
 
         public PainViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.textView = itemView.findViewById(R.id.textView_pill);
+            this.textView_date = itemView.findViewById(R.id.textView_date_pill_item);
+            this.textView_time = itemView.findViewById(R.id.textView_time_pill_item);
             this.imageDelete = itemView.findViewById(R.id.imageDelete);
         }
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="20dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/small_margin"
     android:layout_marginBottom="@dimen/small_margin"
     tools:context=".fragments.PillFragment">
@@ -12,22 +12,36 @@
     <ImageView
         android:id="@+id/imageView_pill"
         android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.2"
+        android:layout_height="20dp"
+        android:layout_weight="0.3"
+        android:layout_gravity="center"
         android:src="@drawable/pill_red" />
 
     <TextView
-        android:id="@+id/textView_pill"
+        android:id="@+id/textView_date_pill_item"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:paddingLeft="@dimen/default_padding"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="@dimen/text_size"/>
+
+    <TextView
+        android:id="@+id/textView_time_pill_item"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:paddingLeft="@dimen/default_padding"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="@dimen/text_size"/>
 
     <ImageView
         android:id="@+id/imageDelete"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="0.1"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:layout_gravity="center"
         android:src="@android:drawable/ic_delete" />
 </LinearLayout>

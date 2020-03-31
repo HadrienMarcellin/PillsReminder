@@ -25,22 +25,22 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editText_date_pill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="date"
                 android:fontFamily="sans-serif-light"
                 android:hint="Date" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editText_time_pill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="time"
                 android:fontFamily="sans-serif-light"
                 android:hint="Time" />
         </LinearLayout>
@@ -53,13 +53,32 @@
             android:layout_height="wrap_content"
             android:text="Drug name :  " />
 
-        <EditText
-            android:id="@+id/editText_drug_pill"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editText_drug_pill"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="sans-serif-light"
             android:hint="@string/hint_word"
             android:inputType="textAutoComplete" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/plus"/>
+
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_marginTop="@dimen/default_margin"

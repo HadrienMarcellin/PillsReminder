@@ -25,7 +25,7 @@ public abstract class PillDatabase extends RoomDatabase {
 
     public static PillDatabase getInstance(Context context) {
         if (INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PillDatabase.class, "PillDataBase").addCallback(sRoomDatabaseCallback).build();
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PillDatabase.class, "PillDataBase").build();
         return INSTANCE;
     }
 

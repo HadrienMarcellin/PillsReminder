@@ -18,7 +18,7 @@ public class DrugRepository {
     public DrugRepository(Application application) {
         DrugDatabase drugDatabase = DrugDatabase.getInstance(application);
         this.drugDao = drugDatabase.medecineDao();
-        this.allMedecines = drugDao.getAllMedecines();
+        this.allMedecines = drugDao.getAllDrugs();
     }
 
     public LiveData<List<Drug>> getAllMedecines() {
@@ -33,7 +33,7 @@ public class DrugRepository {
 
     public void delete(Drug drug) {
         DrugDatabase.databseWriteExecutor.execute(() -> {
-            drugDao.deleteMedecine(drug);
+            drugDao.deleteDrug(drug);
         });
     }
 
