@@ -1,10 +1,10 @@
 package com.example.pillsreminder.viewAdapter;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.entities.Pain;
+import com.example.pillsreminder.fragments.PainTabFragment;
 import com.example.pillsreminder.helpers.CalendarHelpers;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
 
     private List<Pain> allPains;
     private LayoutInflater mInflater;
+    private final PainTabFragment.OnPainFragmentInteractionListener painItemListener;
 
     @NonNull
     @Override
@@ -33,6 +35,12 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
         if (allPains != null) {
             Pain current = allPains.get(position);
             holder.textView.setText(CalendarHelpers.calendarToString(current.getDate()));
+            holder.imageDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    painItemListener.onListClickPainDelete(allPains.get(position));
+                }
+            });
         } else {
             holder.textView.setText("No pain.");
         }
@@ -52,17 +60,20 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
     }
 
     // Constructor
-    public PainListAdapter(Context context) {
+    public PainListAdapter(Context context, PainTabFragment.OnPainFragmentInteractionListener painItemListener) {
         mInflater = LayoutInflater.from(context);
+        this.painItemListener = painItemListener;
     }
 
     public class PainViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textView;
+        private ImageView imageDelete;
+
         public PainViewHolder(@NonNull View itemView) {
             super(itemView);
-
             this.textView = itemView.findViewById(R.id.textView_pill);
+            this.imageDelete = itemView.findViewById(R.id.imageDelete);
         }
     }
 }

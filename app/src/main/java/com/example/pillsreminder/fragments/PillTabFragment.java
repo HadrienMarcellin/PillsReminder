@@ -1,5 +1,6 @@
 package com.example.pillsreminder.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -33,6 +34,7 @@ public class PillTabFragment extends Fragment {
     public static final CharSequence title = "Pills";
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private PillViewModel mPillViewModel;
+    private OnPillFragmentInteractionListener mListener;
 
     public PillTabFragment() {
         // Required empty public constructor
@@ -48,7 +50,7 @@ public class PillTabFragment extends Fragment {
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.pill_recyclerview);
-        final PillListAdapter adapter = new PillListAdapter(getActivity());
+        final PillListAdapter adapter = new PillListAdapter(getActivity(), mListener);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -80,5 +82,26 @@ public class PillTabFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnPillFragmentInteractionListener)
+            mListener = (OnPillFragmentInteractionListener) context;
+        else
+            throw new RuntimeException(context.toString() + " must implement OnPillFragmentInteractionListener.");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
+
+    public interface OnPillFragmentInteractionListener {
+        void onListClickPillDelete(Pill pill);
     }
 }

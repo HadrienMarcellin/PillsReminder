@@ -1,5 +1,6 @@
 package com.example.pillsreminder.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.activities.NewPainActivity;
-import com.example.pillsreminder.activities.NewPillActivity;
 import com.example.pillsreminder.entities.Pain;
 import com.example.pillsreminder.viewAdapter.PainListAdapter;
 import com.example.pillsreminder.viewModels.PainViewModel;
@@ -35,6 +35,7 @@ public class PainTabFragment extends Fragment {
     public static final CharSequence title = "Pain";
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private PainViewModel painViewModel;
+    private OnPainFragmentInteractionListener mListener;
 
     public PainTabFragment() {
         // Required empty public constructor
@@ -51,7 +52,7 @@ public class PainTabFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         RecyclerView recyclerView = getActivity().findViewById(R.id.pain_recyclerview);
-        final PainListAdapter adapter =  new PainListAdapter(getActivity());
+        final PainListAdapter adapter =  new PainListAdapter(getActivity(), mListener);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -83,4 +84,24 @@ public class PainTabFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof OnPainFragmentInteractionListener) {
+            mListener = (OnPainFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnListPainFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach()  {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnPainFragmentInteractionListener {
+        void onListClickPainDelete(Pain pain);
+    }
 }
