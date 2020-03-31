@@ -36,9 +36,9 @@ public class Pill {
     }
 
     @Ignore
-    public Pill(String drug) {
+    public Pill(String drug, Calendar cal) {
         this.drug = drug;
-        this.date = Calendar.getInstance();
+        this.date = cal;
     }
 
     public int getId() {
