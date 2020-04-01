@@ -11,11 +11,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.pillsreminder.dao.DrugDao;
 import com.example.pillsreminder.entities.Drug;
+import com.example.pillsreminder.entities.Pill;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Drug.class}, version = 1, exportSchema = false)
+@Database(entities = {Drug.class, Pill.class}, version = 1, exportSchema = false)
 public abstract class DrugDatabase extends RoomDatabase {
 
     private static volatile DrugDatabase INSTANCE;
@@ -24,7 +25,7 @@ public abstract class DrugDatabase extends RoomDatabase {
 
     public static DrugDatabase getInstance(Context context) {
         if (INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DrugDatabase.class, "DrugDatabase").build();
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DrugDatabase.class, "DrugDatabase").addCallback(sRoomDatabseCallback).build();
         return INSTANCE;
     }
 

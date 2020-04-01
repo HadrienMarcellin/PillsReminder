@@ -121,7 +121,7 @@ public class NewPillActivity extends AppCompatActivity {
             return false;
 
         Calendar cal = CalendarHelpers.stringToCalendar(editTextDate.getText().toString(), editTextTime.getText().toString());
-        newPill = new Pill(editTextDrugPill.getText().toString(), cal);
+        newPill = new Pill(1, cal);
         return true;
 
     }

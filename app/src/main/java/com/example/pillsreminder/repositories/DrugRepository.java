@@ -17,7 +17,7 @@ public class DrugRepository {
 
     public DrugRepository(Application application) {
         DrugDatabase drugDatabase = DrugDatabase.getInstance(application);
-        this.drugDao = drugDatabase.medecineDao();
+        this.drugDao = drugDatabase.drugDao();
         this.allMedecines = drugDao.getAllDrugs();
     }
 
@@ -26,19 +26,19 @@ public class DrugRepository {
     }
 
     public void deleteAll() {
-        DrugDatabase.databseWriteExecutor.execute(()-> {
+        DrugDatabase.databaseWriterExecutor.execute(()-> {
             drugDao.deleteAll();
         });
     }
 
     public void delete(Drug drug) {
-        DrugDatabase.databseWriteExecutor.execute(() -> {
+        DrugDatabase.databaseWriterExecutor.execute(() -> {
             drugDao.deleteDrug(drug);
         });
     }
 
     public void insert(Drug drug) {
-        DrugDatabase.databseWriteExecutor.execute(()-> {
+        DrugDatabase.databaseWriterExecutor.execute(()-> {
             drugDao.insert(drug);
         });
     }

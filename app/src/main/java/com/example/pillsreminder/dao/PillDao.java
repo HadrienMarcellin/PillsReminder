@@ -14,14 +14,15 @@ import java.util.List;
 
 @Dao
 public interface PillDao {
+
     @Query("SELECT * FROM  pillTable")
     LiveData<List<Pill>> getAllPillEntities();
 
-    @Query("SELECt * FROM pillTable WHERE id = :id LIMIT 1")
-    LiveData<List<Pill>> findPillEntityById(long id);
+    @Query("SELECt * FROM pillTable WHERE pill_id = :id LIMIT 1")
+    LiveData<List<Pill>> findPillEntityById(int id);
 
-    @Query("SELECT * FROM pillTable WHERE drug = :drug LIMIT 1")
-    LiveData<List<Pill>> findPillEntityByTitle(String drug);
+    @Query("SELECT * FROM pillTable WHERE drugType_id = :drug LIMIT 1")
+    LiveData<List<Pill>> findPillEntityByTitle(int drug);
 
     @Query("DELETE FROM pillTable")
     void deleteAll();

@@ -2,13 +2,14 @@ package com.example.pillsreminder.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "drugTable")
 public class Drug {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int drug_id;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -28,8 +29,8 @@ public class Drug {
     @ColumnInfo(name = "side_effects")
     private String side_effects;
 
-    public Drug(int id, String name, String type, String sub_type, int times_per_day, String description, String side_effects) {
-        this.id = id;
+    public Drug(int drug_id, String name, String type, String sub_type, int times_per_day, String description, String side_effects) {
+        this.drug_id = drug_id;
         this.name = name;
         this.type = type;
         this.sub_type = sub_type;
@@ -38,6 +39,7 @@ public class Drug {
         this.side_effects = side_effects;
     }
 
+    @Ignore
     public Drug(String name, String type, String sub_type, int times_per_day, String description, String side_effects) {
         this.name = name;
         this.type = type;
@@ -48,8 +50,10 @@ public class Drug {
     }
 
     /// Getters
-    public int getId() {
-        return id;
+
+
+    public int getDrug_id() {
+        return drug_id;
     }
 
     public String getName() {
@@ -77,8 +81,12 @@ public class Drug {
     }
 
     /// Setters
-    public void setId(int id) {
-        this.id = id;
+    public void setSide_effects(String side_effects) {
+        this.side_effects = side_effects;
+    }
+
+    public void setDrug_id(int drug_id) {
+        this.drug_id = drug_id;
     }
 
     public void setName(String name) {
@@ -99,9 +107,5 @@ public class Drug {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setBack_effects(String back_effects) {
-        this.side_effects = back_effects;
     }
 }
