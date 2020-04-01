@@ -44,10 +44,10 @@ public abstract class PillDatabase extends RoomDatabase {
                 PillDao dao = INSTANCE.pillDao();
                 dao.deleteAll();
 
-                Pill pill1 = new Pill(1, Calendar.getInstance());
-                Pill pill2 = new Pill(2, Calendar.getInstance());
-                Pill pill3 = new Pill(3, Calendar.getInstance());
-                Pill pill4 = new Pill(4, Calendar.getInstance());
+                Pill pill1 = new Pill(1, Calendar.getInstance(), 0);
+                Pill pill2 = new Pill(2, Calendar.getInstance(), 0);
+                Pill pill3 = new Pill(3, Calendar.getInstance(), 0);
+                Pill pill4 = new Pill(4, Calendar.getInstance(), 0);
                 dao.insert(pill1);
                 dao.insert(pill2);
                 dao.insert(pill3);

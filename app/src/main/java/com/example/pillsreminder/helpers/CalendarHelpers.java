@@ -32,7 +32,7 @@ public class CalendarHelpers {
         int mins = Integer.parseInt(timeDigits.substring(2));
 
         Calendar cal = Calendar.getInstance();
-        cal.set(year, month, day_of_month, hour, mins);
+        cal.set(year, month - 1, day_of_month, hour, mins);
 
         return cal;
     }

@@ -1,6 +1,11 @@
 package com.example.pillsreminder.viewAdapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +39,16 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
     public void onBindViewHolder(@NonNull PainViewHolder holder, int position) {
         if (allPains != null) {
             Pain current = allPains.get(position);
+
+            SpannableStringBuilder str = new SpannableStringBuilder()
+                    .append("Level : ", new RelativeSizeSpan(0.75f),
+                            Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+                    .append(current.getPainLevel().getName(), new StyleSpan(Typeface.BOLD),
+                            Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
             holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));
             holder.textView_time.setText(CalendarHelpers.calendarToTimeString(current.getDate()));
+            holder.textView_description.setText(str);
             holder.imageDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,12 +84,14 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
 
         private TextView textView_date;
         private TextView textView_time;
+        private TextView textView_description;
         private ImageView imageDelete;
 
         public PainViewHolder(@NonNull View itemView) {
             super(itemView);
             this.textView_date = itemView.findViewById(R.id.textView_date_pill_item);
             this.textView_time = itemView.findViewById(R.id.textView_time_pill_item);
+            this.textView_description = itemView.findViewById(R.id.textView_description_pill);
             this.imageDelete = itemView.findViewById(R.id.imageDelete);
         }
     }

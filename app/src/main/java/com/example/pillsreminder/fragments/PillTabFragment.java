@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.activities.NewPillActivity;
+import com.example.pillsreminder.entities.Drug;
 import com.example.pillsreminder.entities.Pill;
 import com.example.pillsreminder.viewAdapter.PillListAdapter;
+import com.example.pillsreminder.viewModels.DrugViewModel;
 import com.example.pillsreminder.viewModels.PillViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -33,7 +35,8 @@ public class PillTabFragment extends Fragment {
 
     public static final CharSequence title = "Pills";
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
-    private PillViewModel mPillViewModel;
+    private PillViewModel pillViewModel;
+    private DrugViewModel drugViewModel;
     private OnPillFragmentInteractionListener mListener;
 
     public PillTabFragment() {
@@ -49,16 +52,26 @@ public class PillTabFragment extends Fragment {
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
+
+        drugViewModel = ViewModelProviders.of(this).get(DrugViewModel.class);
+        pillViewModel = ViewModelProviders.of(this).get(PillViewModel.class);
+
         RecyclerView recyclerView = getActivity().findViewById(R.id.pill_recyclerview);
         final PillListAdapter adapter = new PillListAdapter(getActivity(), mListener);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mPillViewModel = ViewModelProviders.of(this).get(PillViewModel.class);
-        mPillViewModel.getAllPillEntities().observe(getActivity(), new Observer<List<Pill>>() {
+
+        pillViewModel.getAllPillEntities().observe(getActivity(), new Observer<List<Pill>>() {
             @Override
             public void onChanged(List<Pill> pillEntities) {
                 adapter.setPills(pillEntities);
+            }
+        });
+        drugViewModel.getAllDrugs().observe(getActivity(), new Observer<List<Drug>>() {
+            @Override
+            public void onChanged(List<Drug> drugs) {
+                adapter.setDrugs(drugs);
             }
         });
 

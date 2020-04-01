@@ -38,14 +38,16 @@ public abstract class DrugDatabase extends RoomDatabase {
 
     private static RoomDatabase.Callback sRoomDatabseCallback = new RoomDatabase.Callback() {
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
             databaseWriterExecutor.execute(()-> {
                 DrugDao dao = INSTANCE.drugDao();
                 dao.deleteAll();
 
-                Drug pain = new Drug("Antalnox", "Anti-inflamatoire", "Type non-stéroïdien", 3, "Comprimé a avaler pendant les repas.", "Trouble de la digestion.");
-                dao.insert(pain);
+                Drug drug_undefined = new Drug("Undefined", "Undefined", "Undefined", 0, "Undefined", "Undefined");
+                Drug drug = new Drug("Antalnox", "Anti-inflamatoire", "Type non-stéroïdien", 3, "Comprimé a avaler pendant les repas.", "Trouble de la digestion.");
+                dao.insert(drug_undefined);
+                dao.insert(drug);
             });
 
         }

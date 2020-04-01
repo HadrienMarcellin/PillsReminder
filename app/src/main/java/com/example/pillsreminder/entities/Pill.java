@@ -26,25 +26,37 @@ public class Pill {
     @ColumnInfo(name = "date")
     private Calendar date;
 
+    @ColumnInfo(name = "quantity")
+    private int quantity;
+
+
     // Default Constructor
     public Pill(){
     }
 
     @Ignore
-    public Pill(int pill_id, int drugType_id, Calendar date) {
-        this.pill_id = pill_id;
+    public Pill(int drugType_id, Calendar date, int quantity) {
         this.drugType_id = drugType_id;
         this.date = date;
+        this.quantity = quantity;
     }
 
-    @Ignore
-    public Pill(int drugType_id, Calendar cal) {
-        this.drugType_id = drugType_id;
-        this.date = cal;
-    }
+//    @Ignore
+//    public Pill(int drugType_id, Calendar cal) {
+//        this.drugType_id = drugType_id;
+//        this.date = cal;
+//    }
 
     public int getPill_id() {
         return pill_id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setPill_id(int pill_id) {

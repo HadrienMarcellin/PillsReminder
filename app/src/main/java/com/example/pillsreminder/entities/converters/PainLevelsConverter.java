@@ -4,11 +4,13 @@ import androidx.room.TypeConverter;
 
 import com.example.pillsreminder.helpers.PainLevels;
 
+import java.util.Arrays;
+
 public class PainLevelsConverter {
 
     @TypeConverter
     public static PainLevels intToPainLevel(int level) {
-        return PainLevels.values()[level];
+        return Arrays.stream(PainLevels.values()).filter(d -> d.getLevel() == level).findAny().orElse(PainLevels.UNDIFINED);
     }
 
     @TypeConverter

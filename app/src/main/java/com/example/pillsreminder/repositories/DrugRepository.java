@@ -1,7 +1,10 @@
 package com.example.pillsreminder.repositories;
 
 import android.app.Application;
+import android.os.AsyncTask;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 
 import com.example.pillsreminder.dao.DrugDao;
@@ -13,16 +16,22 @@ import java.util.List;
 public class DrugRepository {
 
     private DrugDao drugDao;
-    private LiveData<List<Drug>> allMedecines;
+    private LiveData<List<Drug>> allDrugs;
+
+    private Drug drugByName;
 
     public DrugRepository(Application application) {
         DrugDatabase drugDatabase = DrugDatabase.getInstance(application);
         this.drugDao = drugDatabase.drugDao();
-        this.allMedecines = drugDao.getAllDrugs();
+        this.allDrugs = drugDao.getAllDrugs();
     }
 
-    public LiveData<List<Drug>> getAllMedecines() {
-        return allMedecines;
+    public LiveData<List<Drug>> getAllDrugs() {
+        return allDrugs;
+    }
+
+    public Drug selectDrugFromName(String name) {
+        return allDrugs.getValue().stream().filter(d -> name.equals(d.getName())).findAny().orElse(null);
     }
 
     public void deleteAll() {
