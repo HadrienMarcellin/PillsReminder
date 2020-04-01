@@ -14,14 +14,14 @@
 
         <TextView
             android:id="@+id/textView"
-            android:textSize="@dimen/text_size"
+            android:textSize="@dimen/default_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Day and time :" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <EditText
@@ -31,6 +31,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="date"
+                android:textSize="@dimen/small_text_size"
                 android:fontFamily="sans-serif-light"
                 android:hint="Date" />
 
@@ -39,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="@dimen/small_text_size"
                 android:ems="10"
                 android:inputType="time"
                 android:fontFamily="sans-serif-light"
@@ -48,28 +50,37 @@
         <TextView
             android:layout_marginTop="@dimen/default_margin"
             android:id="@+id/textView3"
-            android:textSize="@dimen/text_size"
+            android:textSize="@dimen/default_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Drug name :  " />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editText_drug_pill"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_word"
-            android:inputType="textAutoComplete" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_drug_pill"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="viewStart">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+<!--            <EditText-->
+<!--                android:id="@+id/editText_drug_pill"-->
+<!--                android:layout_width="1dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:hint="@string/hint_word"-->
+<!--                android:inputType="textAutoComplete" />-->
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="1dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
                 android:layout_margin="@dimen/default_margin"
@@ -85,13 +96,13 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
+            android:textSize="@dimen/default_text_size"
             android:text="Quantity  :" />
 
         <LinearLayout
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -105,10 +116,10 @@
             <TextView
                 android:id="@+id/new_pill_quantity"
                 android:layout_width="40dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:textSize="@dimen/text_size"
+                android:textSize="@dimen/small_text_size"
                 android:layout_marginLeft="@dimen/default_margin"
                 android:layout_marginRight="@dimen/default_margin"
                 android:hint="1" />
