@@ -41,9 +41,9 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
             Pain current = allPains.get(position);
 
             SpannableStringBuilder str = new SpannableStringBuilder()
-                    .append("Level : ", new RelativeSizeSpan(0.75f),
+                    .append("Douleur : ", new RelativeSizeSpan(0.75f),
                             Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
-                    .append(current.getPainLevel().getName(), new StyleSpan(Typeface.BOLD),
+                    .append(current.getPainLevel().getFrenchName(), new StyleSpan(Typeface.BOLD),
                             Spanned.SPAN_INCLUSIVE_INCLUSIVE);
 
             holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));

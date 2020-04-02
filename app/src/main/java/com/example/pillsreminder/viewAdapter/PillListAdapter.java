@@ -48,7 +48,7 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
             Pill current = mPills.get(position);
 //            holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));
             Drug drug = mDrugs.stream().filter(d -> d.getDrug_id() == current.getDrugType_id()).findAny().orElse(null);
-            String drug_name = (drug != null) ? drug.getName() : "Unknown";
+            String drug_name = (drug != null) ? drug.getName() : "Indéfini";
             @SuppressLint("DefaultLocale") String desc = String.format("%d x %s", current.getPill_id(), drug_name);
 
             SpannableStringBuilder str = new SpannableStringBuilder()

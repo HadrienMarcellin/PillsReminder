@@ -33,7 +33,6 @@ import static android.app.Activity.RESULT_OK;
  */
 public class PillTabFragment extends Fragment {
 
-    public static final CharSequence title = "Pills";
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private PillViewModel pillViewModel;
     private DrugViewModel drugViewModel;
@@ -111,8 +110,6 @@ public class PillTabFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-
 
     public interface OnPillFragmentInteractionListener {
         void onListClickPillDelete(Pill pill);

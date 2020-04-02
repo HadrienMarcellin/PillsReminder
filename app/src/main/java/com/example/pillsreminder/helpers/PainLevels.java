@@ -7,29 +7,36 @@ import java.util.List;
 
 public enum PainLevels {
 
-    UNDIFINED(-1, "Undefined"),
-    NONE(0, "None"),
-    LOW(1, "Low"),
-    MEDIUM(2, "Medium"),
-    HIGH(3, "High"),
-    INTENSE(4, "Intense"),
-    FATAL(5, "Fatal");
+    UNDIFINED(-1, "Undefined", "Indefini"),
+    NONE(0, "None", "Aucune"),
+    LOW(1, "Low", "Faible"),
+    MEDIUM(2, "Medium", "Intermédiaire"),
+    HIGH(3, "High", "Haute"),
+    INTENSE(4, "Intense", "Intense"),
+    FATAL(5, "Fatal", "Critique");
 
     private int level;
-    private String name;
+    private String englishName;
+    private String frenchName;
 
     //Constructor
-    PainLevels(int level, String name) {
-        this.level = level;
-        this.name = name;
-    }
 
+
+    PainLevels(int level, String englishName, String frenchName) {
+        this.level = level;
+        this.englishName = englishName;
+        this.frenchName = frenchName;
+    }
     public int getLevel() {
         return level;
     }
 
-    public String getName() {
-        return name;
+    public String getFrenchName() {
+        return frenchName;
+    }
+
+    public String getEnglishName() {
+        return englishName;
     }
 
     public PainLevels next() {
@@ -50,7 +57,7 @@ public enum PainLevels {
     public static List<String> getAllPainLevels() {
         List<String> painLevels = new ArrayList<>();
         for (PainLevels p : PainLevels.values()) {
-            painLevels.add(p.name);
+            painLevels.add(p.englishName);
         }
         return painLevels;
     }

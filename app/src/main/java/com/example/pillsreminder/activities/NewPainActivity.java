@@ -64,7 +64,7 @@ public class NewPainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     painLevel = PainLevels.FATAL;
                 }
-                textViewPainLevel.setText(painLevel.getName());
+                textViewPainLevel.setText(painLevel.getFrenchName());
             }
         });
 
@@ -76,7 +76,7 @@ public class NewPainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     painLevel = PainLevels.NONE;
                 }
-                textViewPainLevel.setText(painLevel.getName());
+                textViewPainLevel.setText(painLevel.getFrenchName());
             }
         });
 
@@ -112,7 +112,7 @@ public class NewPainActivity extends AppCompatActivity {
 
         editTextViewDate.setText(date);
         editTextViewTime.setText(time);
-        textViewPainLevel.setText(painLevel.getName());
+        textViewPainLevel.setText(painLevel.getFrenchName());
     }
 
     private boolean createPainFromSurvey() {

@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
         adapter = new SITabAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PillTabFragment(), PillTabFragment.title);
-        adapter.addFragment(new PainTabFragment(), PainTabFragment.title);
-        adapter.addFragment(new SportTabFragment(), SportTabFragment.title);
-        adapter.addFragment(new FoodTabFragment(), FoodTabFragment.title);
+        adapter.addFragment(new PillTabFragment(), getString(R.string.pill_tab_fragment_title));
+        adapter.addFragment(new PainTabFragment(), getString(R.string.pain_tab_fragment_title));
+//        adapter.addFragment(new SportTabFragment(), SportTabFragment.title);
+//        adapter.addFragment(new FoodTabFragment(), FoodTabFragment.title);
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

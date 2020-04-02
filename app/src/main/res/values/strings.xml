@@ -6,20 +6,20 @@
 
     <!-- Fragments tabs -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="pill_tab_fragment_title">Pills</string>
-    <string name="pain_tab_fragment_title">Pain</string>
+    <string name="pill_tab_fragment_title">Traitement</string>
+    <string name="pain_tab_fragment_title">Douleur</string>
     <string name="sport_tab_fragment_title">Sport</string>
-    <string name="food_tab_fragment_title">Food</string>
+    <string name="food_tab_fragment_title">Nutrition</string>
     <string name="title_activity_new_pill">NewPillActivity</string>
-    <string name="default_list_title">List</string>
+    <string name="default_list_title">Liste</string>
 
     <!-- New Pill Activity -->
     <string name="hint_word">Name</string>
 
     <!-- Buttons -->
-    <string name="button_save">Save</string>
-    <string name="button_cancel">Cancel</string>
-    <string name="button_next">Next</string>
-    <string name="button_previous">Previous</string>
+    <string name="button_save">Ok</string>
+    <string name="button_cancel">Annuler</string>
+    <string name="button_next">Suivant</string>
+    <string name="button_previous">Retour</string>
 
 </resources>

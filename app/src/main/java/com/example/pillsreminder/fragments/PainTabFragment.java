@@ -32,7 +32,6 @@ import static android.app.Activity.RESULT_OK;
  */
 public class PainTabFragment extends Fragment {
 
-    public static final CharSequence title = "Pain";
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private PainViewModel painViewModel;
     private OnPainFragmentInteractionListener mListener;
