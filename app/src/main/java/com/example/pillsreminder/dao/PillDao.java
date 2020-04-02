@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface PillDao {
 
-    @Query("SELECT * FROM  pillTable")
+    @Query("SELECT * FROM  pillTable ORDER BY date DESC")
     LiveData<List<Pill>> getAllPillEntities();
 
     @Query("SELECt * FROM pillTable WHERE pill_id = :id LIMIT 1")
