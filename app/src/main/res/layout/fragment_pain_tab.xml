@@ -40,7 +40,7 @@
             app:backgroundTint="#BA9CB7DF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:maxImageSize="40dp"
+            app:maxImageSize="55dp"
             app:rippleColor="#2196F3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
