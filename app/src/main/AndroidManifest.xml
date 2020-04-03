@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/logo_canard_application_hadrien"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NewPainActivity"></activity>
-        <activity android:name=".activities.NewPillActivity" />
+        <activity android:name=".activities.NewPainActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="@string/pain_tab_fragment_title"/>
+        <activity android:name=".activities.NewPillActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="@string/pill_tab_fragment_title"/>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
