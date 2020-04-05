@@ -65,6 +65,8 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
                     mListener.onListClickPillDelete(mPills.get(position));
                 }
             });
+            holder.imageIcon.setImageResource(R.drawable.pill_red);
+
         } else {
             holder.textView_date.setText("-");
             holder.textView_time.setText("-");
@@ -99,12 +101,14 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
         private TextView textView_time;
         private TextView textView_description;
         private ImageView imageDelete;
+        private ImageView imageIcon;
         public PillViewHolder(@NonNull View itemView) {
             super(itemView);
             this.textView_date = itemView.findViewById(R.id.textView_date_pill_item);
             this.textView_time = itemView.findViewById(R.id.textView_time_pill_item);
             this.textView_description = itemView.findViewById(R.id.textView_description_pill);
             this.imageDelete = itemView.findViewById(R.id.imageDelete);
+            this.imageIcon = itemView.findViewById(R.id.imageIcon_pill_item);
 
         }
     }

@@ -1,9 +1,11 @@
 package com.example.pillsreminder.viewAdapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -38,23 +40,35 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
     @Override
     public void onBindViewHolder(@NonNull PainViewHolder holder, int position) {
         if (allPains != null) {
+
             Pain current = allPains.get(position);
 
-            SpannableStringBuilder str = new SpannableStringBuilder()
+            SpannableStringBuilder str_pain = new SpannableStringBuilder()
                     .append("Douleur : ", new RelativeSizeSpan(0.75f),
                             Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
                     .append(current.getPainLevel().getFrenchName(), new StyleSpan(Typeface.BOLD),
                             Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            SpannableStringBuilder str_surge = new SpannableStringBuilder().append("Poussée",
+                    new ForegroundColorSpan(Color.rgb(228, 2, 77)),
+                    Spanned.SPAN_INCLUSIVE_INCLUSIVE);
 
             holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));
             holder.textView_time.setText(CalendarHelpers.calendarToTimeString(current.getDate()));
-            holder.textView_description.setText(str);
+            holder.textView_description.setText(str_pain);
+            if (current.isLong_duration())
+                holder.textView_description_plus.setText(str_surge);
+            else
+                holder.textView_description_plus.setText("-");
+
             holder.imageDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     painItemListener.onListClickPainDelete(allPains.get(position));
                 }
             });
+
+            holder.imageIcon.setImageResource(R.drawable.pain);
+
         } else {
             holder.textView_date.setText("-");
             holder.textView_time.setText("-");
@@ -85,14 +99,18 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
         private TextView textView_date;
         private TextView textView_time;
         private TextView textView_description;
+        private TextView textView_description_plus;
         private ImageView imageDelete;
+        private ImageView imageIcon;
 
         public PainViewHolder(@NonNull View itemView) {
             super(itemView);
             this.textView_date = itemView.findViewById(R.id.textView_date_pill_item);
             this.textView_time = itemView.findViewById(R.id.textView_time_pill_item);
             this.textView_description = itemView.findViewById(R.id.textView_description_pill);
+            this.textView_description_plus = itemView.findViewById(R.id.textView_description_pill_plus);
             this.imageDelete = itemView.findViewById(R.id.imageDelete);
+            this.imageIcon = itemView.findViewById(R.id.imageIcon_pill_item);
         }
     }
 }

@@ -10,6 +10,7 @@
     tools:context=".fragments.PillFragment">
 
     <ImageView
+        android:id="@+id/imageView_bar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/default_margin"
@@ -25,12 +26,14 @@
         android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/imageView_pill"
+        android:id="@+id/imageIcon_pill_item"
         android:layout_width="1dp"
-        android:layout_height="15dp"
+        android:layout_height="match_parent"
         android:layout_weight="0.2"
         android:layout_gravity="center"
-        android:src="@drawable/pill_red" />
+        android:foregroundGravity="left"
+        android:padding="@dimen/default_padding"/>
+<!--        android:src="@drawable/pill_red"/>-->
 
     <LinearLayout
         android:layout_width="0dp"
@@ -65,13 +68,30 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView_description_pill"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/default_text_size"
-            android:paddingLeft="@dimen/default_margin"
-            android:text="@string/app_name"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView_description_pill"
+                android:layout_width="1dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_size"
+                android:paddingLeft="@dimen/default_margin"
+                android:text="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/textView_description_pill_plus"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:textSize="@dimen/very_small_text_size" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

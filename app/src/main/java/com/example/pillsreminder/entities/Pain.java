@@ -74,4 +74,6 @@ public class Pain {
     public void setLong_duration(boolean long_duration) {
         this.long_duration = long_duration;
     }
+
+
 }
