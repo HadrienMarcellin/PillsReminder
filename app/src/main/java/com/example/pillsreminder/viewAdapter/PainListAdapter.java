@@ -67,7 +67,7 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
                 }
             });
 
-            holder.imageIcon.setImageResource(R.drawable.pain);
+            holder.imageIcon.setImageResource(R.drawable.pain_icon);
 
         } else {
             holder.textView_date.setText("-");
