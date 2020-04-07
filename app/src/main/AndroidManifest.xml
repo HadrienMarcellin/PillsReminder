@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo_canard_application_hadrien"
+        android:icon="@mipmap/ic_launcher_canard"
         android:label="@string/app_description_name"
-        android:roundIcon="@mipmap/logo_canard_application_hadrien"
+        android:roundIcon="@mipmap/ic_launcher_canard_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.NewPainActivity"
