@@ -1,4 +1,4 @@
-package com.example.pillsreminder.entities.converters;
+package com.exemple.pillsreminder.converters;
 
 import androidx.room.TypeConverter;
 

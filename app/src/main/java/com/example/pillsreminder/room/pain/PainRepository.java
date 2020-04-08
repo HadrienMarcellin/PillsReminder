@@ -1,13 +1,7 @@
-package com.example.pillsreminder.repositories;
+package com.example.pillsreminder.room.pain;
 
 import android.app.Application;
-
 import androidx.lifecycle.LiveData;
-
-import com.example.pillsreminder.dao.PainDao;
-import com.example.pillsreminder.database.PainDatabase;
-import com.example.pillsreminder.entities.Drug;
-import com.example.pillsreminder.entities.Pain;
 
 import java.util.List;
 

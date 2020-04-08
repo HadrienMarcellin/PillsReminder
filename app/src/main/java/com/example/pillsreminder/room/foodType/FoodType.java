@@ -1,11 +1,11 @@
-package com.example.pillsreminder.entities;
+package com.exemple.pillsreminder.foodType;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "activityTypeTable")
-public class ActivityType {
+@Entity(tableName = "foodTable")
+public class FoodType {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -19,23 +19,10 @@ public class ActivityType {
     @ColumnInfo(name = "sub_type")
     private String sub_type;
 
-    @ColumnInfo(name = "risk")
-    private int risk;
-
-    public ActivityType(int id, String name, String type, String sub_type, int risk) {
-        this.id = id;
+    public FoodType(String name, String type, String sub_type) {
         this.name = name;
         this.type = type;
         this.sub_type = sub_type;
-        this.risk = risk;
-    }
-
-    public int getRisk() {
-        return risk;
-    }
-
-    public void setRisk(int risk) {
-        this.risk = risk;
     }
 
     public int getId() {

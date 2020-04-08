@@ -1,4 +1,4 @@
-package com.example.pillsreminder.database;
+package com.exemple.pillsreminder.activityType;
 
 import android.app.Application;
 
@@ -6,8 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.pillsreminder.dao.ActivityTypeDao;
-import com.example.pillsreminder.entities.ActivityType;
+import com.exemple.pillsreminder.foodType.ActivityType;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

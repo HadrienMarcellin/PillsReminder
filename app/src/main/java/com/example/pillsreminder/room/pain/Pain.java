@@ -1,17 +1,13 @@
-package com.example.pillsreminder.entities;
+package com.example.pillsreminder.room.pain;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
-import androidx.room.migration.Migration;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.pillsreminder.entities.converters.CalendarConverter;
-import com.example.pillsreminder.entities.converters.PainLevelsConverter;
-import com.example.pillsreminder.helpers.CalendarHelpers;
+import com.exemple.pillsreminder.converters.CalendarConverter;
+import com.exemple.pillsreminder.converters.PainLevelsConverter;
 import com.example.pillsreminder.helpers.PainLevels;
 
 import java.util.Calendar;

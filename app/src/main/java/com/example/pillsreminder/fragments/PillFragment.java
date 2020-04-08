@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pillsreminder.R;
-import com.example.pillsreminder.entities.Pill;
+import com.exemple.pillsreminder.pill.Pill;
 
 /**
  * A simple {@link Fragment} subclass.

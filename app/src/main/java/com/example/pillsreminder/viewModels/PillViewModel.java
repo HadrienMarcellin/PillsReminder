@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.pillsreminder.entities.Pill;
-import com.example.pillsreminder.repositories.PillRepository;
+import com.exemple.pillsreminder.pill.Pill;
+import com.exemple.pillsreminder.pill.PillRepository;
 
 import java.util.List;
 

@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.activities.NewPillActivity;
-import com.example.pillsreminder.entities.Drug;
-import com.example.pillsreminder.entities.Pill;
+import com.exemple.pillsreminder.drug.Drug;
+import com.exemple.pillsreminder.pill.Pill;
 import com.example.pillsreminder.viewAdapter.PillListAdapter;
 import com.example.pillsreminder.viewModels.DrugViewModel;
 import com.example.pillsreminder.viewModels.PillViewModel;

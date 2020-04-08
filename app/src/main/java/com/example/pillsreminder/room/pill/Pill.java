@@ -1,17 +1,14 @@
-package com.example.pillsreminder.entities;
+package com.exemple.pillsreminder.pill;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 import androidx.room.TypeConverters;
 
-import com.example.pillsreminder.entities.converters.CalendarConverter;
+import com.exemple.pillsreminder.converters.CalendarConverter;
 
 import java.util.Calendar;
-import java.util.List;
 
 @Entity(tableName = "pillTable")
 @TypeConverters({CalendarConverter.class})

@@ -1,4 +1,4 @@
-package com.example.pillsreminder.dao;
+package com.exemple.pillsreminder.pill;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.pillsreminder.entities.Pill;
+import com.exemple.pillsreminder.pill.Pill;
 
 import java.util.List;
 

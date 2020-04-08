@@ -1,4 +1,4 @@
-package com.example.pillsreminder.dao;
+package com.exemple.pillsreminder.activityType;
 
 
 import androidx.lifecycle.LiveData;
@@ -9,7 +9,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.pillsreminder.entities.ActivityType;
+import com.exemple.pillsreminder.foodType.ActivityType;
 
 import java.util.List;
 

@@ -1,15 +1,8 @@
-package com.example.pillsreminder.repositories;
+package com.exemple.pillsreminder.drug;
 
 import android.app.Application;
-import android.os.AsyncTask;
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
-
-import com.example.pillsreminder.dao.DrugDao;
-import com.example.pillsreminder.database.DrugDatabase;
-import com.example.pillsreminder.entities.Drug;
 
 import java.util.List;
 

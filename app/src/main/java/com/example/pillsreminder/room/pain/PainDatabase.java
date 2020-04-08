@@ -1,4 +1,4 @@
-package com.example.pillsreminder.database;
+package com.example.pillsreminder.room.pain;
 
 import android.content.Context;
 
@@ -9,11 +9,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.pillsreminder.dao.PainDao;
-import com.example.pillsreminder.entities.Pain;
 import com.example.pillsreminder.helpers.PainLevels;
-
-import org.jetbrains.annotations.NonNls;
 
 import java.util.Calendar;
 import java.util.concurrent.ExecutorService;

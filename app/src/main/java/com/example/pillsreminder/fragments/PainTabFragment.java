@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.activities.NewPainActivity;
-import com.example.pillsreminder.entities.Pain;
+import com.example.pillsreminder.room.pain.Pain;
 import com.example.pillsreminder.viewAdapter.PainListAdapter;
 import com.example.pillsreminder.viewModels.PainViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

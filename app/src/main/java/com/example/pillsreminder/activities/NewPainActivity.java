@@ -1,8 +1,5 @@
 package com.example.pillsreminder.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.accessibility.AccessibilityManagerCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,13 +9,15 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.pillsreminder.R;
-import com.example.pillsreminder.entities.Pain;
 import com.example.pillsreminder.helpers.CalendarHelpers;
 import com.example.pillsreminder.helpers.DateTextWatcher;
 import com.example.pillsreminder.helpers.PainLevels;
 import com.example.pillsreminder.helpers.TimeTextWatcher;
-import com.example.pillsreminder.repositories.PainRepository;
+import com.example.pillsreminder.room.pain.Pain;
+import com.example.pillsreminder.room.pain.PainRepository;
 
 import java.util.Calendar;
 

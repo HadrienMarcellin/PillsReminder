@@ -2,22 +2,18 @@ package com.example.pillsreminder.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.pillsreminder.R;
-import com.example.pillsreminder.entities.Pain;
-import com.example.pillsreminder.entities.Pill;
+import com.example.pillsreminder.room.pain.Pain;
+import com.exemple.pillsreminder.pill.Pill;
 import com.example.pillsreminder.fragments.AlertDialogFragment;
-import com.example.pillsreminder.fragments.FoodTabFragment;
 import com.example.pillsreminder.fragments.PainTabFragment;
 import com.example.pillsreminder.fragments.PillTabFragment;
-import com.example.pillsreminder.fragments.SportTabFragment;
 import com.example.pillsreminder.tabAdapters.SITabAdapter;
 import com.example.pillsreminder.viewModels.PainViewModel;
 import com.example.pillsreminder.viewModels.PillViewModel;

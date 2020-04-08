@@ -3,10 +3,8 @@ package com.example.pillsreminder.viewAdapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -19,8 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pillsreminder.R;
-import com.example.pillsreminder.entities.Drug;
-import com.example.pillsreminder.entities.Pill;
+import com.exemple.pillsreminder.drug.Drug;
+import com.exemple.pillsreminder.pill.Pill;
 import com.example.pillsreminder.fragments.PillTabFragment;
 import com.example.pillsreminder.helpers.CalendarHelpers;
 

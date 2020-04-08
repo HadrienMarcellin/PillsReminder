@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pillsreminder.R;
-import com.example.pillsreminder.entities.Pain;
+import com.example.pillsreminder.room.pain.Pain;
 import com.example.pillsreminder.fragments.PainTabFragment;
 import com.example.pillsreminder.helpers.CalendarHelpers;
 

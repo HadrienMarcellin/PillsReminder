@@ -1,14 +1,13 @@
 package com.example.pillsreminder.viewModels;
 
 import android.app.Application;
-import android.app.ListActivity;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.pillsreminder.entities.Pain;
-import com.example.pillsreminder.repositories.PainRepository;
+import com.example.pillsreminder.room.pain.Pain;
+import com.example.pillsreminder.room.pain.PainRepository;
 
 import java.util.List;
 
