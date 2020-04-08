@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.pillsreminder.dao.PainDao;
@@ -18,7 +19,7 @@ import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Pain.class}, version = 1, exportSchema = false)
+@Database(entities = {Pain.class}, version = 2, exportSchema = true)
 public abstract class PainDatabase extends RoomDatabase {
 
 
@@ -28,7 +29,7 @@ public abstract class PainDatabase extends RoomDatabase {
 
     public static PainDatabase getInstance(Context context) {
         if (INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PainDatabase.class, "PainDatabase").build();
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PainDatabase.class, "PainDatabase").addMigrations(MIGRATION_1_2).build();
         return INSTANCE;
     }
 
@@ -48,6 +49,20 @@ public abstract class PainDatabase extends RoomDatabase {
                 dao.insert(pain);
             });
 
+        }
+    };
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            // Create new table
+            database.execSQL("CREATE TABLE painTable_new (id INTEGER NOT NULL, level INTEGER, inflammation INTEGER NOT NULL, date INTEGER, PRIMARY KEY (id))");
+            // COpy the data
+            database.execSQL("INSERT INTO painTable_new (id, level, inflammation, date) SELECT id, level, long_duration, date FROM painTable");
+            // Remove the old table
+            database.execSQL("DROP TABLE painTable");
+            // Change the table name to the correct one
+            database.execSQL("ALTER TABLE painTable_new RENAME TO painTable");
         }
     };
 

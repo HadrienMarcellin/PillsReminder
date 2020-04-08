@@ -55,7 +55,7 @@ public class PainListAdapter extends RecyclerView.Adapter<PainListAdapter.PainVi
             holder.textView_date.setText(CalendarHelpers.calendarToDateString(current.getDate()));
             holder.textView_time.setText(CalendarHelpers.calendarToTimeString(current.getDate()));
             holder.textView_description.setText(str_pain);
-            if (current.isLong_duration())
+            if (current.isInflammation())
                 holder.textView_description_plus.setText(str_surge);
             else
                 holder.textView_description_plus.setText("-");

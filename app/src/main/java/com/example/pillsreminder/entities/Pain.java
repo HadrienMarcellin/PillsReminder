@@ -1,10 +1,13 @@
 package com.example.pillsreminder.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.pillsreminder.entities.converters.CalendarConverter;
 import com.example.pillsreminder.entities.converters.PainLevelsConverter;
@@ -23,23 +26,23 @@ public class Pain {
     @ColumnInfo(name = "level")
     private PainLevels painLevel;
 
-    @ColumnInfo(name = "long_duration")
-    private boolean long_duration;
+    @ColumnInfo(name = "inflammation")
+    private boolean inflammation;
 
     @ColumnInfo(name = "date")
     private Calendar date;
 
-    public Pain(int id, PainLevels painLevel, boolean long_duration, Calendar date) {
+    public Pain(int id, PainLevels painLevel, boolean inflammation, Calendar date) {
         this.id = id;
         this.painLevel = painLevel;
-        this.long_duration = long_duration;
+        this.inflammation = inflammation;
         this.date = date;
     }
 
     @Ignore
-    public Pain(PainLevels painLevel, boolean long_duration, Calendar calendar) {
+    public Pain(PainLevels painLevel, boolean inflammation, Calendar calendar) {
         this.painLevel = painLevel;
-        this.long_duration = long_duration;
+        this.inflammation = inflammation;
         this.date = calendar;
     }
 
@@ -67,13 +70,14 @@ public class Pain {
         this.painLevel = painLevel;
     }
 
-    public boolean isLong_duration() {
-        return long_duration;
+    public boolean isInflammation() {
+        return inflammation;
     }
 
-    public void setLong_duration(boolean long_duration) {
-        this.long_duration = long_duration;
+    public void setInflammation(boolean inflammation) {
+        this.inflammation = inflammation;
     }
 
 
 }
+
