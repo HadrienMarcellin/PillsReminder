@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pillsreminder">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_canard"
@@ -9,12 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_canard_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NewPainActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="@string/pain_tab_fragment_title"/>
-        <activity android:name=".activities.NewPillActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="@string/pill_tab_fragment_title"/>
+        <activity
+            android:name=".activities.NewPainActivity"
+            android:label="@string/pain_tab_fragment_title"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.NewPillActivity"
+            android:label="@string/pill_tab_fragment_title"
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
