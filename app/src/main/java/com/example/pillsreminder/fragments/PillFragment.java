@@ -1,15 +1,14 @@
 package com.example.pillsreminder.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.pillsreminder.R;
-import com.exemple.pillsreminder.pill.Pill;
+import com.example.pillsreminder.room.pill.Pill;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -17,10 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pillsreminder.R;
-import com.exemple.pillsreminder.drug.Drug;
-import com.exemple.pillsreminder.pill.Pill;
 import com.example.pillsreminder.fragments.PillTabFragment;
 import com.example.pillsreminder.helpers.CalendarHelpers;
+import com.example.pillsreminder.room.drug.Drug;
+import com.example.pillsreminder.room.pill.Pill;
 
 import java.util.List;
 

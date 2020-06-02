@@ -1,10 +1,5 @@
 package com.example.pillsreminder.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,13 +12,18 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.pillsreminder.R;
-import com.exemple.pillsreminder.drug.Drug;
-import com.exemple.pillsreminder.pill.Pill;
 import com.example.pillsreminder.helpers.CalendarHelpers;
 import com.example.pillsreminder.helpers.DateTextWatcher;
 import com.example.pillsreminder.helpers.TimeTextWatcher;
-import com.exemple.pillsreminder.pill.PillRepository;
+import com.example.pillsreminder.room.drug.Drug;
+import com.example.pillsreminder.room.pill.Pill;
+import com.example.pillsreminder.room.pill.PillRepository;
 import com.example.pillsreminder.viewModels.DrugViewModel;
 
 import java.util.ArrayList;

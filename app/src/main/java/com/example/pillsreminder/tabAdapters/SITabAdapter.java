@@ -32,6 +32,7 @@ public class SITabAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);
     }
+
     public void addFragment(Fragment frag, CharSequence title) {
         mFragmentList.add(frag);
         mFragmentTitleList.add((String)title);

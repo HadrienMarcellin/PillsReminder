@@ -3,6 +3,10 @@ package com.example.pillsreminder.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -10,15 +14,10 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.activities.NewPillActivity;
-import com.exemple.pillsreminder.drug.Drug;
-import com.exemple.pillsreminder.pill.Pill;
+import com.example.pillsreminder.room.drug.Drug;
+import com.example.pillsreminder.room.pill.Pill;
 import com.example.pillsreminder.viewAdapter.PillListAdapter;
 import com.example.pillsreminder.viewModels.DrugViewModel;
 import com.example.pillsreminder.viewModels.PillViewModel;
@@ -111,7 +110,15 @@ public class PillTabFragment extends Fragment {
         mListener = null;
     }
 
+    /**
+     * This interface provides a simple way to handle the delete button from any item in the list
+     * displayed in the fragment.
+     */
     public interface OnPillFragmentInteractionListener {
+        /**
+         * Use this method to remove a pill from the local database.
+         * @param pill item to remove
+         */
         void onListClickPillDelete(Pill pill);
     }
 }

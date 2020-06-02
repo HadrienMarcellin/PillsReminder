@@ -1,23 +1,26 @@
 package com.example.pillsreminder.activities;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-import android.widget.Toast;
-
 import com.example.pillsreminder.R;
-import com.example.pillsreminder.room.pain.Pain;
-import com.exemple.pillsreminder.pill.Pill;
 import com.example.pillsreminder.fragments.AlertDialogFragment;
+import com.example.pillsreminder.fragments.PainOnlineTabFragment;
 import com.example.pillsreminder.fragments.PainTabFragment;
 import com.example.pillsreminder.fragments.PillTabFragment;
+import com.example.pillsreminder.room.pain.Pain;
+import com.example.pillsreminder.room.pill.Pill;
 import com.example.pillsreminder.tabAdapters.SITabAdapter;
 import com.example.pillsreminder.viewModels.PainViewModel;
 import com.example.pillsreminder.viewModels.PillViewModel;
 import com.google.android.material.tabs.TabLayout;
+
+
 
 public class MainActivity extends AppCompatActivity implements PillTabFragment.OnPillFragmentInteractionListener, PainTabFragment.OnPainFragmentInteractionListener, AlertDialogFragment.OnAlertDialogInteractionInterface {
 
@@ -41,8 +44,9 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
 
         adapter = new SITabAdapter(getSupportFragmentManager());
         adapter.addFragment(new PillTabFragment(), getString(R.string.pill_tab_fragment_title));
+        adapter.addFragment(new PainOnlineTabFragment(), getString(R.string.online_tab_fragment_title));
         adapter.addFragment(new PainTabFragment(), getString(R.string.pain_tab_fragment_title));
-//        adapter.addFragment(new SportTabFragment(), SportTabFragment.title);
+
 //        adapter.addFragment(new FoodTabFragment(), FoodTabFragment.title);
 
         viewPager.setAdapter(adapter);
