@@ -1,4 +1,4 @@
-package com.exemple.pillsreminder.drug;
+package com.example.pillsreminder.room.drug;
 
 
 import android.content.Context;
@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.exemple.pillsreminder.pill.Pill;
+import com.example.pillsreminder.room.pill.Pill;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

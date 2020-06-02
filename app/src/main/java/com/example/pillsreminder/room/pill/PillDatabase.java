@@ -1,4 +1,4 @@
-package com.exemple.pillsreminder.pill;
+package com.example.pillsreminder.room.pill;
 
 import android.content.Context;
 
@@ -11,6 +11,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @Database(entities = {Pill.class}, version = 1, exportSchema = false)
@@ -19,10 +21,11 @@ public abstract class PillDatabase extends RoomDatabase {
     private static volatile PillDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    private static Logger LOGGER = Logger.getLogger(PillDatabase.class.getName());
 
     public static PillDatabase getInstance(Context context) {
         if (INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PillDatabase.class, "PillDataBase").build();
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PillDatabase.class, "PillDataBase").addCallback(sRoomDatabaseCallback).build();
         return INSTANCE;
     }
 
@@ -37,6 +40,13 @@ public abstract class PillDatabase extends RoomDatabase {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
+            LOGGER.log(Level.INFO, "Open pill database.");
+        }
+
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            LOGGER.log(Level.INFO, "Create pill database.");
             databaseWriteExecutor.execute(()-> {
                 PillDao dao = INSTANCE.pillDao();
                 dao.deleteAll();
@@ -52,4 +62,5 @@ public abstract class PillDatabase extends RoomDatabase {
             });
         }
     };
+
 }

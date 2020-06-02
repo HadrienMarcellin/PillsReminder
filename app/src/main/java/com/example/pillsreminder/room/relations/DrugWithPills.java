@@ -1,10 +1,10 @@
-package com.exemple.pillsreminder.relations;
+package com.example.pillsreminder.room.relations;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import com.exemple.pillsreminder.drug.Drug;
-import com.exemple.pillsreminder.pill.Pill;
+import com.example.pillsreminder.room.drug.Drug;
+import com.example.pillsreminder.room.pill.Pill;
 
 import java.util.ArrayList;
 import java.util.List;

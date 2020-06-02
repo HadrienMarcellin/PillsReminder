@@ -1,13 +1,9 @@
-package com.exemple.pillsreminder.pill;
+package com.example.pillsreminder.room.pill;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-
-import com.exemple.pillsreminder.pill.PillDao;
-import com.exemple.pillsreminder.pill.PillDatabase;
-import com.exemple.pillsreminder.pill.Pill;
 
 import java.util.List;
 
