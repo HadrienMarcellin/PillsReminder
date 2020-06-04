@@ -3,6 +3,10 @@ package com.example.pillsreminder.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -10,16 +14,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.activities.NewPainActivity;
 import com.example.pillsreminder.room.pain.Pain;
 import com.example.pillsreminder.viewAdapter.PainListAdapter;
-import com.example.pillsreminder.viewModels.PainViewModel;
+import com.example.pillsreminder.viewModels.TreatmentViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -33,7 +32,8 @@ import static android.app.Activity.RESULT_OK;
 public class PainTabFragment extends Fragment {
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
-    private PainViewModel painViewModel;
+//    private PainViewModel painViewModel;
+    private TreatmentViewModel treatmentViewModel;
     private OnPainFragmentInteractionListener mListener;
 
     public PainTabFragment() {
@@ -55,8 +55,10 @@ public class PainTabFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        painViewModel = ViewModelProviders.of(this).get(PainViewModel.class);
-        painViewModel.getAllPains().observe(getActivity(), new Observer<List<Pain>>() {
+//        painViewModel = ViewModelProviders.of(this).get(PainViewModel.class);
+        treatmentViewModel = ViewModelProviders.of(this).get(TreatmentViewModel.class);
+
+        treatmentViewModel.getAllPains().observe(getActivity(), new Observer<List<Pain>>() {
             @Override
             public void onChanged(List<Pain> pains) {
                 adapter.setAllPains(pains);

@@ -10,16 +10,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.pillsreminder.R;
 import com.example.pillsreminder.fragments.AlertDialogFragment;
-import com.example.pillsreminder.fragments.PainOnlineTabFragment;
 import com.example.pillsreminder.fragments.PainTabFragment;
 import com.example.pillsreminder.fragments.PillTabFragment;
 import com.example.pillsreminder.room.pain.Pain;
 import com.example.pillsreminder.room.pill.Pill;
 import com.example.pillsreminder.tabAdapters.SITabAdapter;
-import com.example.pillsreminder.viewModels.PainViewModel;
-import com.example.pillsreminder.viewModels.PillViewModel;
+import com.example.pillsreminder.viewModels.TreatmentViewModel;
 import com.google.android.material.tabs.TabLayout;
-
 
 
 public class MainActivity extends AppCompatActivity implements PillTabFragment.OnPillFragmentInteractionListener, PainTabFragment.OnPainFragmentInteractionListener, AlertDialogFragment.OnAlertDialogInteractionInterface {
@@ -27,8 +24,6 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
     private SITabAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private PillViewModel mPillViewModel;
-    private PainViewModel mPainViewModel;
 
     private Pain painToDelete;
     private Pill pillToDelete;
@@ -44,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
 
         adapter = new SITabAdapter(getSupportFragmentManager());
         adapter.addFragment(new PillTabFragment(), getString(R.string.pill_tab_fragment_title));
-        adapter.addFragment(new PainOnlineTabFragment(), getString(R.string.online_tab_fragment_title));
+//        adapter.addFragment(new PainOnlineTabFragment(), getString(R.string.online_tab_fragment_title));
         adapter.addFragment(new PainTabFragment(), getString(R.string.pain_tab_fragment_title));
 
 //        adapter.addFragment(new FoodTabFragment(), FoodTabFragment.title);
@@ -53,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
         tabLayout.setupWithViewPager(viewPager);
 
     }
+
+
 
 
     @Override
@@ -84,18 +81,22 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
 
         String msg = "";
         switch (databsase) {
-            case "pain":
-                PainViewModel painViewModel = ViewModelProviders.of(this).get(PainViewModel.class);
-                painViewModel.deleteItem(painToDelete);
+            case "pain": {
+                TreatmentViewModel treatmentViewModel = ViewModelProviders.of(this).get(TreatmentViewModel.class);
+                treatmentViewModel.deletePain(painToDelete);
                 msg = "Pain was deleted.";
                 break;
-            case "pill":
-                PillViewModel pillViewModel = ViewModelProviders.of(this).get(PillViewModel.class);
-                pillViewModel.deleteItem(pillToDelete);
+            }
+            case "pill": {
+                TreatmentViewModel treatmentViewModel = ViewModelProviders.of(this).get(TreatmentViewModel.class);
+                treatmentViewModel.deletePill(pillToDelete);
                 msg = "Pill was deleted.";
                 break;
-            default:
+            }
+            default: {
                 msg = "An error occurred while deleting";
+                break;
+            }
 
 
         }
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements PillTabFragment.O
     public void onDialogNegativeClick(DialogFragment dialogFragment) {
         Toast.makeText(this, "Operation cancelled", Toast.LENGTH_LONG).show();
     }
+
 
 
 }

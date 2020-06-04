@@ -23,20 +23,23 @@ import com.example.pillsreminder.helpers.DateTextWatcher;
 import com.example.pillsreminder.helpers.TimeTextWatcher;
 import com.example.pillsreminder.room.drug.Drug;
 import com.example.pillsreminder.room.pill.Pill;
-import com.example.pillsreminder.room.pill.PillRepository;
-import com.example.pillsreminder.viewModels.DrugViewModel;
+import com.example.pillsreminder.viewModels.TreatmentViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class NewPillActivity extends AppCompatActivity {
 
 
     public static final String EXTRA_REPLY = "com.example.android.pillsreminder.REPLY";
 
-    private DrugViewModel drugViewModel;
+//    private DrugViewModel drugViewModel;
+//    private PillViewModel pillViewModel;
+    private TreatmentViewModel treatmentViewModel;
 
     private EditText editTextDrugPill;
     private EditText editTextDate;
@@ -51,6 +54,7 @@ public class NewPillActivity extends AppCompatActivity {
 
     private LiveData<List<Drug>> allDrugs;
     private List<String> allDrugNames = new ArrayList<>();
+    private static final Logger LOGGER = Logger.getLogger(NewPillActivity.class.getName());
 
 
     @Override
@@ -64,7 +68,7 @@ public class NewPillActivity extends AppCompatActivity {
 
 
         final ArrayAdapter<String> drugAdapter = new ArrayAdapter<String>(getApplicationContext(),
-                R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList("Undefined", "Antalnox")));
+                R.layout.simple_spinner_item);
         drugAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         drugSpinner.setAdapter(drugAdapter);
         drugSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -80,24 +84,38 @@ public class NewPillActivity extends AppCompatActivity {
             }
         });
 
-        drugViewModel = ViewModelProviders.of(this).get(DrugViewModel.class);
-        allDrugs = drugViewModel.getAllDrugs();
+//
+//        drugViewModel = ViewModelProviders.of(this).get(DrugViewModel.class);
+//        pillViewModel = ViewModelProviders.of(this).get(PillViewModel.class);
+        treatmentViewModel = ViewModelProviders.of(this).get(TreatmentViewModel.class);
+
+
+        allDrugs = treatmentViewModel.getAllDrugs();
         allDrugs.observe(this, new Observer<List<Drug>>() {
             @Override
             public void onChanged(List<Drug> drugs) {
-                //TODO: Implement adapter update for spinner.
-                allDrugNames.clear();
-                for(Drug drug : drugs) {
-                    allDrugNames.add(drug.getName());
-                }
+                drugAdapter.clear();
+                drugAdapter.addAll(getDrugNamesFromDrugs(drugs));
                 drugAdapter.notifyDataSetChanged();
             }
         });
+
 
         editTextTime.addTextChangedListener(new TimeTextWatcher());
         editTextDate.addTextChangedListener(new DateTextWatcher());
 
         setDefaultValues();
+    }
+
+
+    private List<String> getDrugNamesFromDrugs(List<Drug> drugs) {
+
+        List<String> drugs_names = new ArrayList<>();
+
+        for(Drug drug : drugs) {
+            drugs_names.add(drug.getName());
+        }
+        return drugs_names;
     }
 
     private void setButtonCallbacks() {
@@ -156,8 +174,10 @@ public class NewPillActivity extends AppCompatActivity {
     }
 
     private void insertPillToDatabase() {
-        PillRepository pillRepository = new PillRepository(getApplication());
-        pillRepository.insert(newPill);
+
+        LOGGER.log(Level.INFO, treatmentViewModel.pillToString(newPill));
+        treatmentViewModel.printAllDrugs();
+        treatmentViewModel.insertPill(newPill);
     }
 
     private boolean createPillFromSurvey() {
@@ -166,7 +186,10 @@ public class NewPillActivity extends AppCompatActivity {
 //        if(TextUtils.isEmpty(editTextDrugPill.getText()))
 //            return false;
 
-        Drug drug = drugViewModel.selectDrugFromName(allDrugNames.get(drugSpinner.getSelectedItemPosition()));
+        LOGGER.log(Level.INFO, "Drug Database is Empty: " + Objects.requireNonNull(treatmentViewModel.getAllDrugs().getValue()).isEmpty());
+        LOGGER.log(Level.INFO, "Drug Database is Empty: " + Objects.requireNonNull(treatmentViewModel.getAllDrugs().getValue()).size());
+        Drug drug = treatmentViewModel.selectDrugFromName(allDrugs.getValue().get(drugSpinner.getSelectedItemPosition()).getName());
+
         if (drug.getName().equals("Undefined"))
             return false;
 
@@ -174,7 +197,7 @@ public class NewPillActivity extends AppCompatActivity {
             return false;
 
         Calendar cal = CalendarHelpers.stringToCalendar(editTextDate.getText().toString(), editTextTime.getText().toString());
-        newPill = new Pill(drug.getDrug_id(), cal, pillQuantity);
+        newPill = new Pill(drug.getId(), cal, pillQuantity);
 
         return true;
 
