@@ -1,0 +1,141 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "ef8e366bd359c5b5a406450a8d7f2505",
+    "entities": [
+      {
+        "tableName": "pillTable",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pill_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `drugType_id` INTEGER NOT NULL, `date` INTEGER NOT NULL, `quantity` INTEGER NOT NULL, `removed` INTEGER NOT NULL, `server_synched` INTEGER NOT NULL, FOREIGN KEY(`drugType_id`) REFERENCES `drugTable`(`drug_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "pill_id",
+            "columnName": "pill_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "drugType_id",
+            "columnName": "drugType_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "removed",
+            "columnName": "removed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "server_synched",
+            "columnName": "server_synched",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pill_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_pillTable_drugType_id",
+            "unique": false,
+            "columnNames": [
+              "drugType_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pillTable_drugType_id` ON `${TABLE_NAME}` (`drugType_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "drugTable",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "drugType_id"
+            ],
+            "referencedColumns": [
+              "drug_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "drugTable",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`drug_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `type` TEXT, `sub_type` TEXT, `times_per_day` INTEGER NOT NULL, `description` TEXT, `side_effects` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "drug_id",
+            "columnName": "drug_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sub_type",
+            "columnName": "sub_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "times_per_day",
+            "columnName": "times_per_day",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "side_effects",
+            "columnName": "side_effects",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "drug_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ef8e366bd359c5b5a406450a8d7f2505')"
+    ]
+  }
+}
