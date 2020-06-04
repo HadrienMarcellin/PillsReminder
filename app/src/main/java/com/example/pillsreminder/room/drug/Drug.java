@@ -8,8 +8,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "drugTable")
 public class Drug {
 
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    private int drug_id;
+    private int id;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -29,8 +30,8 @@ public class Drug {
     @ColumnInfo(name = "side_effects")
     private String side_effects;
 
-    public Drug(int drug_id, String name, String type, String sub_type, int times_per_day, String description, String side_effects) {
-        this.drug_id = drug_id;
+    public Drug(int id, String name, String type, String sub_type, int times_per_day, String description, String side_effects) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.sub_type = sub_type;
@@ -52,8 +53,8 @@ public class Drug {
     /// Getters
 
 
-    public int getDrug_id() {
-        return drug_id;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -85,8 +86,8 @@ public class Drug {
         this.side_effects = side_effects;
     }
 
-    public void setDrug_id(int drug_id) {
-        this.drug_id = drug_id;
+    public void setId(int drug_id) {
+        this.id = drug_id;
     }
 
     public void setName(String name) {

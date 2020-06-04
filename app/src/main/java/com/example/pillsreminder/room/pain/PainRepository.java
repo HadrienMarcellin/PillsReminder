@@ -1,18 +1,23 @@
 package com.example.pillsreminder.room.pain;
 
 import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 
+import com.example.pillsreminder.room.TreatmentDatabase;
+
 import java.util.List;
+import java.util.logging.Logger;
 
 public class PainRepository {
 
     private PainDao painDao;
     private LiveData<List<Pain>> allPains;
+    private static final Logger LOGGER = Logger.getLogger(PainRepository.class.getName());
 
     public PainRepository(Application application) {
-        PainDatabase painDatabase = PainDatabase.getInstance(application);
-        this.painDao = painDatabase.painDao();
+        TreatmentDatabase treatmentDatabase = TreatmentDatabase.getInstance(application);
+        this.painDao = treatmentDatabase.painDao();
         this.allPains = painDao.getAllPains();
     }
 
@@ -22,19 +27,20 @@ public class PainRepository {
 
     // You must call these on a non UI Thread.
     public void deleteAll() {
-        PainDatabase.databaseWriterExecutor.execute(()-> {
+        TreatmentDatabase.databaseWriterExecutor.execute(()-> {
             painDao.deleteAll();
         });
     }
 
     public void delete(Pain pain) {
-        PainDatabase.databaseWriterExecutor.execute(()-> {
+        TreatmentDatabase.databaseWriterExecutor.execute(()-> {
             painDao.delete(pain);
         });
     }
 
     public void insert(Pain pain) {
-        PainDatabase.databaseWriterExecutor.execute(()-> {
+
+        TreatmentDatabase.databaseWriterExecutor.execute(()-> {
             painDao.insert(pain);
         });
     }
